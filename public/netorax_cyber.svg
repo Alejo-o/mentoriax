@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="100%" height="100%">
+  <defs>
+    <linearGradient id="cyberBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#151b28" />
+      <stop offset="100%" stop-color="#0E131F" />
+    </linearGradient>
+    <linearGradient id="cyberNeon" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#93C6D6" />
+      <stop offset="100%" stop-color="#9CE37D" />
+    </linearGradient>
+    <linearGradient id="visorGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#81559B" />
+      <stop offset="50%" stop-color="#93C6D6" />
+      <stop offset="100%" stop-color="#9CE37D" />
+    </linearGradient>
+    <filter id="cBloom">
+      <feGaussianBlur stdDeviation="2" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+  </defs>
+  <!-- Background circle -->
+  <circle cx="64" cy="64" r="60" fill="url(#cyberBg)" stroke="url(#cyberNeon)" stroke-width="2.5" />
+  
+  <!-- Antennas / Ears -->
+  <rect x="22" y="52" width="6" height="18" rx="3" fill="#93C6D6" />
+  <rect x="100" y="52" width="6" height="18" rx="3" fill="#93C6D6" />
+  <circle cx="64" cy="20" r="4" fill="#9CE37D" filter="url(#cBloom)" />
+  <line x1="64" y1="24" x2="64" y2="34" stroke="#93C6D6" stroke-width="2.5" />
+  
+  <!-- Robot Head -->
+  <rect x="30" y="34" width="68" height="54" rx="16" fill="#1A2536" stroke="#93C6D6" stroke-width="2" />
+  
+  <!-- Visor / Eyes Display -->
+  <rect x="38" y="46" width="52" height="24" rx="8" fill="#0B101B" stroke="#81559B" stroke-width="1.5" />
+  
+  <!-- Glowing Eye Lenses (Cyber Mentor) -->
+  <circle cx="52" cy="58" r="5.5" fill="#9CE37D" filter="url(#cBloom)" />
+  <circle cx="76" cy="58" r="5.5" fill="#9CE37D" filter="url(#cBloom)" />
+  <circle cx="54" cy="56" r="1.5" fill="#FFFFFF" />
+  <circle cx="78" cy="56" r="1.5" fill="#FFFFFF" />
+
+  <!-- Smile / Voice audio waves -->
+  <path d="M 50 78 Q 64 85 78 78" fill="none" stroke="#93C6D6" stroke-width="2" stroke-linecap="round" />
+  
+  <!-- Collar / Shoulders -->
+  <path d="M 40 96 L 88 96 L 94 116 L 34 116 Z" fill="#151b28" stroke="#93C6D6" stroke-width="1.5" />
+  <line x1="64" y1="96" x2="64" y2="114" stroke="#9CE37D" stroke-width="2" />
+</svg>

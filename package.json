@@ -1,0 +1,16 @@
+{
+  "name": "mentoriax",
+  "version": "1.0.0",
+  "description": "mentoriax - mentor académico y emocional 24/7",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.6",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "express-rate-limit": "^8.7.1",
+    "helmet": "^8.3.0"
+  }
+}

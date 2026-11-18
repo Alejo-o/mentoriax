@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+<meta name="description" content="mentoriax · Tu espacio seguro para aprender, crecer y avanzar. Mentoría académica, emocional y vocacional 24/7 con NETORAX.">
+<meta name="theme-color" content="#15122E">
+<title>mentoriax · Tu espacio seguro para aprender, crecer y avanzar</title>
+<script>
+  // Limpieza inmediata de caches antiguas
+  if ('caches' in window) {
+    caches.keys().then(keys => {
+      keys.forEach(k => {
+        if (k.startsWith('mentor-ia') || k.startsWith('mentoriax-v') && k !== 'mentoriax-v10') {
+          caches.delete(k);
+        }
+      });
+    });
+  }
+</script>
+<link rel="icon" type="image/png" href="logo.png?v=11">
+<link rel="alternate icon" type="image/png" href="favicon.png?v=11">
+<link rel="apple-touch-icon" href="logo-192.png?v=11">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css?v=11">
+<link rel="manifest" href="manifest.json?v=11">
+</head>
+<body>
+
+<!-- ============================================================
+  NAVIGATION
+============================================================ -->
+<header class="nav" role="banner">
+  <a class="brand" href="#chat" aria-label="mentoriax - inicio">
+    <span class="brand-mark" aria-hidden="true">
+      <img src="logo.png?v=11" alt="mentoriax logo" width="36" height="36" class="brand-logo-img">
+    </span>
+    <span class="brand-text">mentoria<span class="bx">x</span></span>
+  </a>
+  <nav class="nav-links" role="navigation" aria-label="Menú principal">
+    <a href="#chat">Chat</a>
+    <a href="#planificador">Planificador</a>
+    <a href="#diario">Bienestar</a>
+    <a href="#instituciones">Instituciones</a>
+  </nav>
+  <button class="hamburger" id="hamburger" aria-label="Abrir menú" aria-expanded="false" type="button">
+    <span></span><span></span><span></span>
+  </button>
+</header>
+
+<nav class="nav-drawer" id="navDrawer" aria-label="Menú móvil">
+  <a href="#chat" class="drawer-link">💬 Chat</a>
+  <a href="#planificador" class="drawer-link">📋 Planificador</a>
+  <a href="#diario" class="drawer-link">🧘 Bienestar <small>Test · Calma · Ayuda</small></a>
+  <a href="#instituciones" class="drawer-link">🏛️ Instituciones</a>
+</nav>
+
+<main>
+  <!-- ============================================================
+    HERO — CHAT
+  ============================================================ -->
+  <section id="chat" class="hero" aria-label="Chat con NETORAX">
+    <div class="intro">
+      <div class="onboarding-badge" id="profileBadge" role="button" tabindex="0">
+        <span class="dot"></span>
+        <span id="profileBadgeText">Personaliza tu experiencia</span>
+      </div>
+
+      <p class="brand-slogan-lead">Tu espacio seguro para aprender, crecer y avanzar</p>
+      <h1>Cuéntame cómo vas y empezamos por ahí.</h1>
+      <p class="lead">mentoriax te acompaña con tus materias, tu rumbo profesional y lo que sientes. Si necesitas a una persona, te conecta con Bienestar Universitario.</p>
+
+      <!-- Affirmation card -->
+      <div class="affirmation-card" id="affirmationCard" aria-live="polite">
+        <span class="affirmation-icon">✨</span>
+        <p id="affirmationText">Cada pequeño paso cuenta. Estás haciendo más de lo que crees.</p>
+      </div>
+
+      <h2 class="q">¿Cómo te sientes hoy?</h2>
+      <div id="moods" class="moods" role="group" aria-label="Estado de ánimo"></div>
+      <div class="thermo" aria-live="polite">
+        <div>
+          <span id="moodLabel">Elige una opción o escríbeme</span>
+          <span id="moodPct"></span>
+        </div>
+        <div class="bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+          <i id="moodBar"></i>
+        </div>
+      </div>
+
+      <div class="quick">
+        <button type="button" data-q="Siento que Álgebra y Trigonometría se me dificulta mucho y me da estrés pasar el semestre." id="quick-algebra">📐 Álgebra se me está haciendo difícil</button>
+        <button type="button" data-q="¿Crees que debería salirme de la carrera? Me siento abrumado." id="quick-carrera">🤔 ¿Debería salirme de la carrera?</button>
+        <button type="button" data-q="Necesito un plan de estudio práctico para organizar mi tiempo esta semana." id="quick-plan">📅 Organizar mi semana de estudio</button>
+      </div>
+    </div>
+
+    <div class="chat" role="region" aria-label="Chat con NETORAX">
+      <div class="chat-head">
+        <div class="av" id="netoraxAvatarBtn" role="button" tabindex="0" title="Haz clic para personalizar el logo de NETORAX" aria-label="Personalizar logo de NETORAX">
+          <img id="netoraxAvatarImg" src="logo.png?v=11" alt="Avatar de NETORAX" width="42" height="42" class="av-logo-img">
+          <span class="av-edit-badge" title="Cambiar avatar">✏️</span>
+        </div>
+        <div class="chat-head-info">
+          <b>NETORAX</b>
+          <span class="profile-chip" id="profileChip" style="display:none"></span>
+          <small><span class="status-dot"></span>Tu mentor · 24/7</small>
+        </div>
+        <div class="chat-head-tools">
+          <button id="openAvatarModalBtn" class="chat-tool-btn" type="button" title="Personalizar logo o avatar de NETORAX">
+            <span>🎨</span> Cambiar logo
+          </button>
+          <button id="reset" class="chat-tool-btn" type="button" title="Reiniciar chat">
+            <span>↺</span> Reiniciar
+          </button>
+        </div>
+      </div>
+      <div id="log" class="log" aria-live="polite" role="log"></div>
+      <div id="help" class="help" hidden role="alert"></div>
+      <form id="form">
+        <button type="button" id="voiceBtn" aria-label="Dictar por voz" title="Hablar">🎤</button>
+        <input id="input" autocomplete="off" placeholder="Escribe lo que sientes o tu duda…" aria-label="Mensaje" maxlength="600">
+        <button class="btn" type="submit" id="sendBtn">Enviar</button>
+      </form>
+      <p class="note">mentoriax acompaña, pero no reemplaza a un profesional de la salud.</p>
+    </div>
+  </section>
+
+  <!-- ============================================================
+    PLANIFICADOR
+  ============================================================ -->
+  <section id="planificador">
+    <h2>Planifica tu semana en micro-metas</h2>
+    <p class="sub">Divide lo grande en pasos pequeños. Tus metas se guardan solo en este navegador.</p>
+
+    <form id="planForm">
+      <input id="planInput" placeholder="Ej: resolver 2 ejercicios de identidades trigonométricas" aria-label="Nueva micro-meta" maxlength="200" required>
+      <select id="planPriority" aria-label="Prioridad">
+        <option value="media">Media</option>
+        <option value="alta">🔴 Alta</option>
+        <option value="baja">🟢 Baja</option>
+      </select>
+      <input type="date" id="planDate" aria-label="Fecha límite">
+      <button class="btn" type="submit">+ Agregar</button>
+    </form>
+
+    <div class="plan-filters" role="group">
+      <button class="filter-btn active" data-filter="all">Todas</button>
+      <button class="filter-btn" data-filter="pendiente">Pendientes</button>
+      <button class="filter-btn" data-filter="done">✅ Completadas</button>
+      <button class="filter-btn" data-filter="alta">🔴 Alta prioridad</button>
+    </div>
+
+    <ul id="planList"></ul>
+    <div class="plan-prog">
+      <div class="bar" role="progressbar" aria-valuemin="0" aria-valuemax="100">
+        <i id="planBar"></i>
+      </div>
+      <p id="planText"></p>
+    </div>
+  </section>
+
+  <!-- ============================================================
+    DIARIO DE BIENESTAR
+  ============================================================ -->
+  <section id="diario">
+    <h2>Tu bienestar</h2>
+    <p class="sub">Empieza por una acción rápida. Tu historial y logros viven aquí; solo tú los ves en este navegador.</p>
+
+    <div class="wellbeing-hub" role="group" aria-label="Acciones de bienestar">
+      <button type="button" class="hub-action hub-action--test wellbeing-test-trigger" id="openPhqBtn" aria-haspopup="dialog" aria-controls="phqModal">
+        <span class="hub-action-icon">🧪</span>
+        <span class="hub-action-body">
+          <b>Test rápido de bienestar</b>
+          <small>4 preguntas · 2 min · solo orientación</small>
+        </span>
+      </button>
+      <button type="button" class="hub-action hub-action--breath wellbeing-action-breathing">
+        <span class="hub-action-icon">🫁</span>
+        <span class="hub-action-body">
+          <b>Respiración guiada</b>
+          <small>Reduce el estrés en 2 min</small>
+        </span>
+      </button>
+      <button type="button" class="hub-action hub-action--ground wellbeing-action-grounding">
+        <span class="hub-action-icon">🌿</span>
+        <span class="hub-action-body">
+          <b>Grounding 5-4-3-2-1</b>
+          <small>Para la ansiedad ahora mismo</small>
+        </span>
+      </button>
+    </div>
+    <p id="phqResult" class="phq-result hub-test-result" hidden role="status"></p>
+
+    <div class="wellbeing-stats">
+      <div class="streak-card" id="streakCard">
+        <span class="streak-fire">🔥</span>
+        <div>
+          <b id="streakNum">0</b> días
+          <small>racha de check-ins en el chat</small>
+        </div>
+      </div>
+      <div class="achievements-row" id="achievementsRow"></div>
+    </div>
+
+    <div class="diary-card resources-card hotlines-banner">
+      <h3>📞 ¿Necesitas hablar con alguien?</h3>
+      <div class="hotlines">
+        <a href="tel:106" class="hotline-item" aria-label="Llamar a Línea 106">
+          <span class="hotline-num">106</span>
+          <span>Línea Salud Mental Colombia · Gratuita · 24/7</span>
+        </a>
+        <a href="tel:123" class="hotline-item" aria-label="Llamar al 123">
+          <span class="hotline-num">123</span>
+          <span>Emergencias · Colombia</span>
+        </a>
+        <div class="hotline-item">
+          <span class="hotline-num">💬</span>
+          <span>Web: <a href="https://www.minsalud.gov.co" target="_blank" rel="noopener">Minsalud · Línea 106</a></span>
+        </div>
+      </div>
+    </div>
+
+    <h3 class="diary-section-title">Tu historial emocional</h3>
+    <div class="diary-grid">
+      <div class="diary-card chart-card">
+        <h3>Tendencia emocional (14 días)</h3>
+        <div id="moodChartWrap">
+          <svg id="moodChart" viewBox="0 0 560 180" aria-label="Gráfica de estado de ánimo"></svg>
+          <p class="chart-empty" id="chartEmpty">Registra tu estado de ánimo en el chat para ver la gráfica aquí.</p>
+        </div>
+      </div>
+      <div class="diary-card summary-card" id="weeklySummary">
+        <h3>Esta semana</h3>
+        <div id="weeklyStats"></div>
+      </div>
+    </div>
+
+    <!-- Psicoeducación -->
+    <div class="psico-section">
+      <h3>📚 Aprende sobre tu bienestar</h3>
+      <div class="psico-grid">
+        <details class="psico-card">
+          <summary>😰 ¿Qué es la ansiedad académica?</summary>
+          <p>Es una respuesta de estrés ante las exigencias del entorno académico. Es normal en cierta medida, pero cuando interfiere con tu vida diaria es importante atenderla. Síntomas comunes: taquicardia, insomnio, dificultad para concentrarse.</p>
+        </details>
+        <details class="psico-card">
+          <summary>😴 El sueño y el rendimiento</summary>
+          <p>Dormir menos de 7 horas reduce la memoria a corto plazo hasta un 40%. Estudiar hasta tarde suele ser contraproducente: un sueño completo consolida mejor lo aprendido que una hora extra de repaso.</p>
+        </details>
+        <details class="psico-card">
+          <summary>🧠 Síndrome del impostor</summary>
+          <p>La sensación de "no merezco estar aquí" o "en cualquier momento me van a descubrir" es muy común entre universitarios. Lo sienten el 70% de los estudiantes en algún momento. No eres el único.</p>
+        </details>
+        <details class="psico-card">
+          <summary>🏃 El ejercicio como antidepresivo</summary>
+          <p>30 minutos de ejercicio moderado 3 veces por semana producen un efecto antidepresivo equivalente al de algunos medicamentos, según estudios de la Universidad de Harvard. Caminar cuenta.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+    INSTITUCIONES
+  ============================================================ -->
+  <div class="band">
+    <section id="instituciones">
+      <h2>Para vicerrectorías y Bienestar Universitario</h2>
+      <p class="sub">mentoriax amplía la cobertura de acompañamiento sin ampliar la nómina: detecta señales tempranas y entrega el caso a una persona real.</p>
+      <div class="nums">
+        <div><b data-target="2723364">0</b><span>estudiantes en educación superior en Colombia (SNIES)</span></div>
+        <div><b data-target="12.8" data-prefix="≈ USD " data-suffix=" M">≈ USD 0 M</b><span>mercado disponible (SAM) a $21.000 por estudiante</span></div>
+        <div><b data-target="374000" data-prefix="≈ USD ">≈ USD 0</b><span>mercado obtenible (SOM): 72.000 estudiantes en Norte de Santander</span></div>
+      </div>
+      <ol class="steps" role="list">
+        <li><b>Detecta</b>Analiza el tono de la conversación y las señales de estrés o desmotivación.</li>
+        <li><b>Alerta</b>Avisa de forma confidencial cuando hay riesgo de deserción o crisis.</li>
+        <li><b>Conecta</b>Remite al estudiante con los profesionales de Bienestar de su universidad.</li>
+      </ol>
+      <div class="testimonials">
+        <h3>Lo que dicen nuestros estudiantes</h3>
+        <div class="testimonial-grid">
+          <div class="testimonial-card">
+            <blockquote>"Estaba a punto de retirarme del semestre. NETORAX me ayudó a dividir mis materias en metas pequeñas y logré pasar Cálculo."</blockquote>
+            <cite>— Valentina R., Ingeniería Industrial, UIS</cite>
+          </div>
+          <div class="testimonial-card">
+            <blockquote>"Me sentía muy ansioso antes de los parciales. El mentor me enseñó la técnica Pomodoro y el ejercicio de respiración. ¡Funcionó!"</blockquote>
+            <cite>— Camilo T., Medicina, UFPS</cite>
+          </div>
+          <div class="testimonial-card">
+            <blockquote>"No sabía si seguir en Contaduría o cambiarme. NETORAX me ayudó a pensar con claridad y hablar con Bienestar."</blockquote>
+            <cite>— Laura M., Contaduría, UNISIMÓN</cite>
+          </div>
+        </div>
+      </div>
+      <a class="btn" href="mailto:correo@ejemplo.com?subject=Quiero%20conocer%20mentoriax">📩 Agendar una demostración</a>
+    </section>
+  </div>
+</main>
+
+<!-- ============================================================
+  FLOATING WELLBEING BUTTON
+============================================================ -->
+<button class="wellbeing-fab" id="wellbeingFab" type="button" aria-label="Ir a tu bienestar">
+  🧘 Bienestar
+</button>
+
+<!-- ============================================================
+  POMODORO MODAL
+============================================================ -->
+<div class="pomo-modal" id="pomoModal" hidden role="timer" aria-live="polite">
+  <h3>🍅 Pomodoro</h3>
+  <div class="pomo-time" id="pomoTime">25:00</div>
+  <div class="pomo-phase" id="pomoPhase">Sesión de trabajo</div>
+  <div class="pomo-controls">
+    <button id="pomoPause" type="button">⏸ Pausar</button>
+    <button id="pomoStop" type="button">✕ Cerrar</button>
+  </div>
+</div>
+
+<!-- ============================================================
+  BREATHING MODAL
+============================================================ -->
+<div class="modal-overlay" id="breathingModal" hidden role="dialog" aria-modal="true" aria-labelledby="breathingTitle">
+  <div class="modal-box breathing-box">
+    <div class="breathing-header">
+      <h3 id="breathingTitle">Ejercicio de respiración</h3>
+      <select id="breathingTech" aria-label="Técnica">
+        <option value="box">Box Breathing (4-4-4-4)</option>
+        <option value="478">Técnica 4-7-8</option>
+        <option value="calm">Relajación (4-6)</option>
+      </select>
+    </div>
+    <div class="breathing-arena">
+      <div class="breath-ring" id="breathRing">
+        <div class="breath-inner">
+          <span id="breathCount">4</span>
+        </div>
+      </div>
+    </div>
+    <p class="breath-phase" id="breathPhase">Prepárate…</p>
+    <p class="breath-sub" id="breathSub">Siéntate cómodamente. Cierra los ojos si puedes.</p>
+    <div class="breathing-controls">
+      <button class="btn" id="breathStart" type="button">▶ Comenzar</button>
+      <button class="btn" id="breathStop" type="button" style="display:none">⏹ Detener</button>
+      <button class="modal-close-btn" id="breathClose" type="button">Cerrar</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================
+  GROUNDING 5-4-3-2-1 MODAL
+============================================================ -->
+<div class="modal-overlay" id="groundingModal" hidden role="dialog" aria-modal="true" aria-labelledby="groundingTitle">
+  <div class="modal-box grounding-box">
+    <h3 id="groundingTitle">🌿 Técnica 5-4-3-2-1</h3>
+    <p class="grounding-intro">Conecta con el presente para calmar la ansiedad.</p>
+    <div class="grounding-progress" id="groundingProgress">
+      <span class="gp-dot active"></span><span class="gp-dot"></span><span class="gp-dot"></span><span class="gp-dot"></span><span class="gp-dot"></span>
+    </div>
+    <div class="grounding-step" id="groundingStepBox">
+      <div class="grounding-sense" id="groundingSense">👁️</div>
+      <p class="grounding-q" id="groundingQ">Nombra 5 cosas que puedes <b>VER</b> ahora mismo</p>
+      <input type="text" id="groundingInput" placeholder="Escríbelas separadas por coma…" maxlength="200" aria-label="Respuesta">
+    </div>
+    <div class="grounding-controls">
+      <button class="btn" id="groundingNext" type="button">Siguiente →</button>
+      <button class="modal-close-btn" id="groundingClose" type="button">Cerrar</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================
+  PHQ-2 / GAD-2 TEST MODAL
+============================================================ -->
+<div class="modal-overlay" id="phqModal" hidden role="dialog" aria-modal="true" aria-labelledby="phqTitle">
+  <div class="modal-box phq-box">
+    <h3 id="phqTitle">🧪 Test rápido de bienestar</h3>
+    <p class="phq-disclaimer">⚠️ Este test <b>no es un diagnóstico médico</b>. Es una orientación para saber si podrías beneficiarte de apoyo profesional.</p>
+    <div class="phq-progress" id="phqProgressWrap">
+      <div class="phq-progress-meta">
+        <span id="phqProgressText">Pregunta 1 de 4</span>
+        <span id="phqAnsweredText">0 respondidas</span>
+      </div>
+      <div class="bar phq-progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="4" aria-valuenow="0">
+        <i id="phqProgressBar"></i>
+      </div>
+    </div>
+    <p class="phq-scroll-hint" id="phqScrollHint">Desliza hacia abajo si no ves todas las preguntas.</p>
+    <div id="phqQuestions"></div>
+    <div id="phqResultBox" hidden class="phq-result-box"></div>
+    <div class="phq-controls">
+      <button class="btn" id="phqSubmit" type="button">Ver resultados</button>
+      <button class="modal-close-btn" id="phqClose" type="button">Cerrar</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================
+  ONBOARDING MODAL
+============================================================ -->
+<div class="modal-overlay" id="onboardingModal" hidden role="dialog" aria-modal="true" aria-labelledby="onboardingTitle">
+  <div class="modal-box">
+    <div class="modal-logo-wrap" style="text-align:center;margin-bottom:12px;">
+      <img src="logo.svg" alt="mentoriax logo" width="64" height="64" style="filter:drop-shadow(0 0 16px rgba(156,227,125,.3));">
+    </div>
+    <h3 id="onboardingTitle">👋 ¡Hola! Bienvenido a mentoriax</h3>
+    <p>Cuéntame sobre ti para darte consejos más precisos para tu situación.</p>
+    <div class="fields">
+      <input type="text" id="profileName" placeholder="Tu nombre" maxlength="40" aria-label="Nombre">
+      <input type="text" id="profileUniv" placeholder="Tu universidad" maxlength="60" aria-label="Universidad">
+      <input type="text" id="profileCarrera" placeholder="Tu carrera" maxlength="60" aria-label="Carrera">
+      <select id="profileSemestre" aria-label="Semestre">
+        <option value="">Semestre actual</option>
+        <option value="1">1.° semestre</option><option value="2">2.° semestre</option>
+        <option value="3">3.° semestre</option><option value="4">4.° semestre</option>
+        <option value="5">5.° semestre</option><option value="6">6.° semestre</option>
+        <option value="7">7.° semestre</option><option value="8">8.° semestre</option>
+        <option value="9">9.° semestre</option><option value="10">10.° semestre</option>
+      </select>
+    </div>
+    <button class="btn" type="button" id="saveProfile">Guardar y empezar 🚀</button>
+    <span class="skip" id="skipOnboarding" role="button" tabindex="0">Omitir por ahora</span>
+  </div>
+</div>
+
+<!-- ============================================================
+  AVATAR CUSTOMIZATION MODAL (NETORAX)
+============================================================ -->
+<div class="modal-overlay" id="avatarModal" hidden role="dialog" aria-modal="true" aria-labelledby="avatarModalTitle">
+  <div class="modal-box avatar-modal-box">
+    <div class="avatar-modal-header">
+      <h3 id="avatarModalTitle">🎨 Personaliza el logo de NETORAX</h3>
+      <p class="sub" style="margin-bottom:16px;">Elige uno de los estilos prediseñados o sube tu propia imagen desde tu equipo.</p>
+    </div>
+
+    <!-- Vista previa en vivo -->
+    <div class="avatar-preview-container">
+      <div class="avatar-preview-ring">
+        <img id="avatarModalPreview" src="logo.png?v=11" alt="Vista previa avatar" width="68" height="68">
+      </div>
+      <div>
+        <b style="font-size:1.05rem;display:block;">NETORAX</b>
+        <small style="color:var(--mut);">Vista previa en vivo</small>
+      </div>
+    </div>
+
+    <!-- Presets list -->
+    <p class="avatar-section-label">Elige un logo prediseñado:</p>
+    <div class="avatar-presets-grid" id="avatarPresets">
+      <button type="button" class="avatar-preset-btn active" data-src="logo.png" title="Logo Oficial con la X">
+        <img src="logo.png" alt="mentoriax">
+        <span>mentoriax</span>
+      </button>
+      <button type="button" class="avatar-preset-btn" data-src="netorax_cyber.svg" title="Cyber NETORAX">
+        <img src="netorax_cyber.svg" alt="Cyber NETORAX">
+        <span>Cyber Bot</span>
+      </button>
+      <button type="button" class="avatar-preset-btn" data-src="netorax_owl.svg" title="Búho Académico">
+        <img src="netorax_owl.svg" alt="Búho Académico">
+        <span>Sabiduría</span>
+      </button>
+      <button type="button" class="avatar-preset-btn" data-src="netorax_brain.svg" title="Mente Brillante">
+        <img src="netorax_brain.svg" alt="Mente Brillante">
+        <span>Mente</span>
+      </button>
+      <button type="button" class="avatar-preset-btn" data-src="original_logo.jpg" title="Logo Original">
+        <img src="original_logo.jpg" alt="Logo Original">
+        <span>Original</span>
+      </button>
+    </div>
+
+    <!-- Subir imagen propia -->
+    <div class="avatar-upload-section">
+      <p class="avatar-section-label">O sube una imagen propia:</p>
+      <label class="avatar-file-dropzone" for="customAvatarInput">
+        <span class="dropzone-icon">📁</span>
+        <span class="dropzone-text">Selecciona una imagen de tu dispositivo</span>
+        <small>(PNG, JPG, SVG, WebP)</small>
+        <input type="file" id="customAvatarInput" accept="image/*" style="display:none;">
+      </label>
+    </div>
+
+    <!-- O pegar URL -->
+    <div class="avatar-url-section">
+      <p class="avatar-section-label">O pega un enlace de imagen (URL):</p>
+      <div class="avatar-url-row">
+        <input type="url" id="customAvatarUrl" placeholder="https://ejemplo.com/mi-logo.png" aria-label="URL de imagen">
+        <button type="button" id="applyAvatarUrlBtn" class="btn" style="padding:7px 14px;font-size:.85rem;">Cargar</button>
+      </div>
+    </div>
+
+    <!-- Acciones -->
+    <div class="avatar-modal-actions">
+      <button type="button" class="btn" id="saveAvatarBtn">Guardar cambios ✓</button>
+      <button type="button" class="avatar-reset-btn" id="resetAvatarBtn">Restablecer original</button>
+      <button type="button" class="modal-close-btn" id="closeAvatarBtn">Cerrar</button>
+    </div>
+  </div>
+</div>
+
+<!-- Toast notifications -->
+<div id="toastContainer" class="toast-container" aria-live="assertive"></div>
+
+<footer>
+  <div style="display:flex;justify-content:center;margin-bottom:14px;">
+    <img src="logo-horizontal.svg" alt="mentoriax · Tu espacio seguro para aprender, crecer y avanzar" style="height:38px;opacity:.92;max-width:280px;display:block;">
+  </div>
+  <p>mentoriax · Cátedra UNISIMÓN Innprende 2 ·
+    <a href="mailto:correo@ejemplo.com">Contacto</a> ·
+    <a href="tel:106">Línea 106</a>
+  </p>
+</footer>
+
+<script src="js/app.js?v=11"></script>
+</body>
+</html>

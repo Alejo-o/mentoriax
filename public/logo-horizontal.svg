@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 280" width="100%" height="100%">
+  <defs>
+    <linearGradient id="hBubbleGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#7650F8" />
+      <stop offset="100%" stop-color="#5E38ED" />
+    </linearGradient>
+    <filter id="hGlow" x="-15%" y="-15%" width="130%" height="130%">
+      <feDropShadow dx="0" dy="6" stdDeviation="12" flood-color="#6A45F5" flood-opacity="0.3" />
+    </filter>
+  </defs>
+
+  <!-- Isotipo Speech Bubble (escala x=0.38, y=0.38 aproximadamente) -->
+  <g transform="translate(24, 20) scale(0.44)">
+    <path d="M 160 48 L 352 48 C 424 48, 468 92, 468 164 L 468 304 C 468 376, 424 420, 352 420 L 182 420 L 84 472 C 72 478, 64 470, 68 456 L 80 404 C 54 380, 44 346, 44 304 L 44 164 C 44 92, 88 48, 160 48 Z"
+          fill="url(#hBubbleGrad)" filter="url(#hGlow)" />
+    <!-- Mentee inside -->
+    <circle cx="256" cy="126" r="28" fill="#2BD49A" />
+    <line x1="178" y1="196" x2="334" y2="352" stroke="#FFFFFF" stroke-width="48" stroke-linecap="round" />
+    <line x1="334" y1="196" x2="178" y2="352" stroke="#FFFFFF" stroke-width="48" stroke-linecap="round" />
+  </g>
+
+  <!-- Tipografía: mentoria (blanco/bruma en modo oscuro) + x (Violeta Mentor) -->
+  <!-- Letras 'mentoria' -->
+  <text x="264" y="160" font-family="'Figtree', 'Bricolage Grotesque', system-ui, sans-serif" font-size="118" font-weight="800" fill="#F4F2FF" letter-spacing="-3">mentoria<tspan fill="#6A45F5">x</tspan></text>
+
+  <!-- Slogan -->
+  <text x="268" y="218" font-family="'Figtree', system-ui, sans-serif" font-size="28" font-weight="500" fill="#B9AEFF" opacity="0.9" letter-spacing="-0.2">Tu espacio seguro para aprender, crecer y avanzar</text>
+</svg>

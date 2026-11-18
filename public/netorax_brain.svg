@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="100%" height="100%">
+  <defs>
+    <linearGradient id="brainBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#151b28" />
+      <stop offset="100%" stop-color="#0E131F" />
+    </linearGradient>
+    <linearGradient id="brainNeon" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FF8FA3" />
+      <stop offset="50%" stop-color="#81559B" />
+      <stop offset="100%" stop-color="#93C6D6" />
+    </linearGradient>
+  </defs>
+  <!-- Background circle -->
+  <circle cx="64" cy="64" r="60" fill="url(#brainBg)" stroke="#9CE37D" stroke-width="2" />
+  
+  <!-- Glowing aura behind brain -->
+  <circle cx="64" cy="62" r="36" fill="#81559B" opacity="0.18" />
+  
+  <!-- Left hemisphere -->
+  <path d="M 60 36 C 48 36, 36 44, 36 56 C 34 62, 36 70, 42 74 C 38 80, 42 90, 52 90 C 56 90, 60 88, 60 84" 
+        fill="none" stroke="url(#brainNeon)" stroke-width="3" stroke-linecap="round" />
+  <path d="M 48 48 C 54 52, 54 60, 48 64 C 54 68, 54 76, 50 82" 
+        fill="none" stroke="url(#brainNeon)" stroke-width="2.5" stroke-linecap="round" />
+        
+  <!-- Right hemisphere -->
+  <path d="M 68 36 C 80 36, 92 44, 92 56 C 94 62, 92 70, 86 74 C 90 80, 86 90, 76 90 C 72 90, 68 88, 68 84" 
+        fill="none" stroke="#9CE37D" stroke-width="3" stroke-linecap="round" />
+  <path d="M 80 48 C 74 52, 74 60, 80 64 C 74 68, 74 76, 78 82" 
+        fill="none" stroke="#9CE37D" stroke-width="2.5" stroke-linecap="round" />
+
+  <!-- Center divider -->
+  <line x1="64" y1="36" x2="64" y2="92" stroke="#93C6D6" stroke-width="2" stroke-linecap="round" stroke-dasharray="3,3" />
+
+  <!-- Synaptic spark nodes -->
+  <circle cx="64" cy="36" r="3" fill="#E2F89C" />
+  <circle cx="36" cy="56" r="2.5" fill="#93C6D6" />
+  <circle cx="92" cy="56" r="2.5" fill="#9CE37D" />
+  <circle cx="64" cy="64" r="3.5" fill="#FFFFFF" />
+  <circle cx="48" cy="64" r="2" fill="#FF8FA3" />
+  <circle cx="80" cy="64" r="2" fill="#E2F89C" />
+</svg>
